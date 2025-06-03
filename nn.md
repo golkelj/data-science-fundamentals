@@ -1,4 +1,6 @@
 # Numpy Neural Network
+Download this for the LaTex view of math equations
+
 This marks the start of my machine learning understanding as I am concurrently taking foundational class at the University of Califorina, San Diego, as a data science major. In this project I am going to explore a basic example of a Neural work the and many of the low level ideas and math behind it in order to get a deeper understanding before utilizing Tensorflow, sck-kit, Pytorch, and other pre-made libraries.
 ## Preprocess
 This is simply used to load the data in with the main 28x28 image being the x_train, y_train, x_test, y_test
