@@ -1,5 +1,4 @@
 # Numpy Neural Network
-Download this for the LaTex view of math equations
 
 This marks the start of my machine learning understanding as I am concurrently taking a foundational class at the University of California, San Diego, as a data science major. In this project, I will explore a basic example of a neural network and the underlying low-level ideas and mathematics to gain a deeper understanding before utilizing Tensorflow, scikit-learn, PyTorch, and other pre-made libraries.
 ## Preprocess
@@ -47,7 +46,7 @@ The simple NN has 3 total layers: the input layer, the hidden layer, and the out
 
 After all the preprocessing and matrix manipulation, we now need to initialize the weights and basis. All the weights are applied between the nodes, and the basis is applied at all the nodes are the input layer. 
 
-We start with the weights as randomized and all the basis as 0 zeros. These are all set up as matrices. 
+We start with the weights as randomized and all the biases as 0 zeros. These are all set up as matrices. 
 
 ```python
 def init_params():
@@ -101,7 +100,7 @@ def forward_propagation(X, w1, b1, w2, b2):
 ```
 
 ### Backpropagation 
-Backpropagation is the crucial step in training a neural network where the network learns from its mistakes. After the forward propagation step, we have the network's predictions, and we can calculate how far off these predictions are from the actual values using the Loss function.
+Backpropagation is the crucial step in training a neural network, where the network learns from its mistakes. After the forward propagation step, we have the network's predictions, and we can calculate how far off these predictions are from the actual values using the Loss function.
 
 The core idea of backpropagation is to take this calculated error (the "Loss") and propagate it backwards through the network, layer by layer. As we move backward, we calculate the gradient of the Loss function with respect to each of the network's parameters (weights and biases). The gradient essentially tells us in which direction, and by how much, we need to adjust each parameter to reduce the error.
 
@@ -115,7 +114,7 @@ $$
 
 This formula calculates the average negative logarithm of the predicted probability for the correct class across all training examples (m). It quantifies how well the network is performing. A lower loss value indicates better performance.
 
-Derivative of the Loss with respect to the output layer (dZ 
+Derivative of the Loss concerning the output layer (dZ 
 2
 ​
  ):
@@ -124,12 +123,9 @@ $$
 dZ_2 = a_2 - Y_{\text{one-hot}}
 $$
 
-This calculates the error at the output layer. a2 represents the predicted probabilities from the Softmax activation, and Y 
-one-hot
-​
-  is the one-hot encoded representation of the true labels. The difference between these tells us how much the network's output deviated from the correct answer.
+This calculates the error at the output layer. a2 represents the predicted probabilities from the Softmax activation, and Y is the one-hot encoded representation of the true labels. The difference between these tells us how much the network's output deviated from the correct answer.
 
-Gradient of the Loss with respect to the second weight matrix (dW 
+Gradient of the Loss concerning the second weight matrix (dW 
 2
 ​
  ):
@@ -140,7 +136,7 @@ $$
 
 This formula calculates how much the second layer's weights (w2) contributed to the error. It does this by taking the error at the output layer (dZ_2) and multiplying it by the transpose of the activations from the hidden layer (a_1^T). The result is then averaged over the number of training examples (m). This gradient will be used to update w2 in the opposite direction to reduce the loss.
 
-Gradient of the Loss with respect to the second bias vector (db 
+Gradient of the Loss concerning the second bias vector (db 
 2
 ​
  ):
@@ -151,7 +147,7 @@ $$
 
 This calculates how much the second layer's biases (b2) contributed to the error. It's the average of the error at the output layer (dZ_2) summed across all training examples. This gradient will be used to update b2.
 
-Derivative of the Loss with respect to the hidden layer (dZ 
+Derivative of the Loss concerning the hidden layer (dZ 
 1
 ​
  ):
@@ -162,7 +158,7 @@ $$
 
 This propagates the error back to the hidden layer. It takes the error from the output layer (dZ_2), weights it by the transpose of the second weight matrix (w_2^T), and then applies the derivative of the ReLU activation function (\text{ReLU}'(z_1)). This tells us how much the hidden layer's activations contributed to the error in the output.
 
-Gradient of the Loss with respect to the first weight matrix (dW 
+Gradient of the Loss concerning the first weight matrix (dW 
 1
 ​
  ):
@@ -176,7 +172,7 @@ Similar to dW
 ​
  , this calculates how much the first layer's weights (w1) contributed to the error. It takes the error propagated back to the hidden layer (dZ_1) and multiplies it by the transpose of the input data (X^T), averaged over the training examples (m). This gradient will be used to update w1.
 
-Gradient of the Loss with respect to the first bias vector (db 
+Gradient of the Loss concerning the first bias vector (db 
 1
 ​
  ):
@@ -188,7 +184,7 @@ $$
 This calculates how much the first layer's biases (b1) contributed to the error. It's the average of the error at the hidden layer (dZ_1) summed across all training examples. This gradient will be used to update b1.
 
 In essence, backpropagation uses the chain rule of calculus to efficiently calculate these gradients across all the layers of the network. These gradients are then used by the Gradient Descent algorithm to update the weights and biases in a way that minimizes the Loss function, thus improving the network's performance over time.
-For backprogations we are going to take the output that was given and then go backwards as the name implies and find the derivative of the loss function in respect to its respective element at each layer. 
+For backpropagations, we are going to take the output that was given and then go backwards, as the name implies, and find the derivative of the loss function with respect to its respective element at each layer. 
 
 
 $$
@@ -217,7 +213,7 @@ def backward_propagation(X, z1, a1, w2, a2, Y):
 
 ### Gradient descent 
 
-This is the part where the weights and basis are updated with the gradients that are calculated in Back Proprogation. 
+This is the part where the weights and basis are updated with the gradients that are calculated in Back Propagation. 
 
 ```python
 def update_params(w1, b1, w2, b2, dW1, db1, dW2, db2, learning_rate):
@@ -273,4 +269,4 @@ Train Accuracy: 80.67%
 Dev Accuracy: 80.94%
 Test Accuracy: 81.17%
 
-With a pretty simple model we were able to predict a hand written number 80% of the time. 
+With a pretty simple model, we were able to predict a handwritten number 80% of the time. 
