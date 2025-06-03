@@ -1,9 +1,9 @@
 # Numpy Neural Network
 Download this for the LaTex view of math equations
 
-This marks the start of my machine learning understanding as I am concurrently taking foundational class at the University of Califorina, San Diego, as a data science major. In this project I am going to explore a basic example of a Neural work the and many of the low level ideas and math behind it in order to get a deeper understanding before utilizing Tensorflow, sck-kit, Pytorch, and other pre-made libraries.
+This marks the start of my machine learning understanding as I am concurrently taking a foundational class at the University of California, San Diego, as a data science major. In this project, I will explore a basic example of a neural network and the underlying low-level ideas and mathematics to gain a deeper understanding before utilizing Tensorflow, scikit-learn, PyTorch, and other pre-made libraries.
 ## Preprocess
-This is simply used to load the data in with the main 28x28 image being the x_train, y_train, x_test, y_test
+This is simply used to load the data in, with the main 28x28 image being the x_train, y_train, x_test, y_test
 ```python
 import numpy as np
 import pandas as pd
@@ -13,13 +13,13 @@ import tensorflow as tf
 # note tensorflow is only used to load the data in
 ```
 
-With the images current in a 28 by 28 sized 2d array we need to flattended to a 1d array sized 784 by 1 in order for the fully contected layers of the NN to be processed as input features
+With the images current in a 28 by 28-sized 2d array, we need to flatten it to a 1D array sized 784 by 1 for the fully connected layers of the NN to be processed as input features
 
 ```python
 x_train_flat = x_train.reshape(-1, 28*28).astype(np.float32) / 255.0
 ```
 
-The matrix is then split into the training data and the test data and then transposed as the feature vectors are the rows and the columns themself are the features (The image).
+The matrix is then split into training data and test data, and subsequently transposed, where the feature vectors are the rows and the columns themselves are the features (the image).
 
 ```python
 df = pd.DataFrame(x_train_flat)
@@ -41,11 +41,11 @@ X_train = data_train[0:n-1].astype(np.float32)
 
 ### Overview 
 
-The simple NN has 3 total layers, the input layer, the hidden layer, and the output layer. The input layer is the first layer (left more) that takes in the input as a matrix. In my example it is the flattend and transposed 784 x 1 matrix. The next layer to the right is the hidden layer and its
+The simple NN has 3 total layers: the input layer, the hidden layer, and the output layer. The input layer is the first layer (left) that takes in the input as a matrix. In my example, it is the flattened and transposed 784 x 1 matrix. The next layer to the right is the hidden layer, and its
 <img src="images/image1.png" alt="image" title="NN">
 
 
-After all the preprocessing and matrix manipulation we now need to initialize the weights and basis. all the weights are applied between the nodes and the basis are applied at all the nodes are the input layer. 
+After all the preprocessing and matrix manipulation, we now need to initialize the weights and basis. All the weights are applied between the nodes, and the basis is applied at all the nodes are the input layer. 
 
 We start with the weights as randomized and all the basis as 0 zeros. These are all set up as matrices. 
 
@@ -58,7 +58,7 @@ def init_params():
     return w1, b1, w2, b2
 ```
 
-### Foward Propigation
+### Forward Propagation
 
 Forward propagation is the process of taking input data and passing it through the layers of the neural network to produce an output. This involves calculating a weighted sum of the inputs at each neuron in a layer, adding a bias, and then applying an activation function. The output of one layer becomes the input to the next layer, and this process continues until the signal reaches the final output layer, which provides the network's prediction.
 
@@ -108,18 +108,22 @@ The core idea of backpropagation is to take this calculated error (the "Loss") a
 Let's break down the formulas you provided:
 
 Loss Function:
+
 $$
 \text{Loss} = -\frac{1}{m} \sum_{i=1}^m \log(a_2[y_i, i])
 $$
+
 This formula calculates the average negative logarithm of the predicted probability for the correct class across all training examples (m). It quantifies how well the network is performing. A lower loss value indicates better performance.
 
 Derivative of the Loss with respect to the output layer (dZ 
 2
 ​
  ):
+ 
 $$
 dZ_2 = a_2 - Y_{\text{one-hot}}
 $$
+
 This calculates the error at the output layer. a2 represents the predicted probabilities from the Softmax activation, and Y 
 one-hot
 ​
@@ -129,36 +133,44 @@ Gradient of the Loss with respect to the second weight matrix (dW
 2
 ​
  ):
+
 $$
 dW_2 = \frac{1}{m} dZ_2 \cdot a_1^T
 $$
+
 This formula calculates how much the second layer's weights (w2) contributed to the error. It does this by taking the error at the output layer (dZ_2) and multiplying it by the transpose of the activations from the hidden layer (a_1^T). The result is then averaged over the number of training examples (m). This gradient will be used to update w2 in the opposite direction to reduce the loss.
 
 Gradient of the Loss with respect to the second bias vector (db 
 2
 ​
  ):
+
 $$
 db_2 = \frac{1}{m} \sum_{i=1}^m dZ_2^{(i)}
 $$
+
 This calculates how much the second layer's biases (b2) contributed to the error. It's the average of the error at the output layer (dZ_2) summed across all training examples. This gradient will be used to update b2.
 
 Derivative of the Loss with respect to the hidden layer (dZ 
 1
 ​
  ):
+ 
 $$
 dZ_1 = (w_2^T \cdot dZ_2) \cdot \text{ReLU}'(z_1)
 $$
+
 This propagates the error back to the hidden layer. It takes the error from the output layer (dZ_2), weights it by the transpose of the second weight matrix (w_2^T), and then applies the derivative of the ReLU activation function (\text{ReLU}'(z_1)). This tells us how much the hidden layer's activations contributed to the error in the output.
 
 Gradient of the Loss with respect to the first weight matrix (dW 
 1
 ​
  ):
+ 
 $$
 dW_1 = \frac{1}{m} dZ_1 \cdot X^T
 $$
+
 Similar to dW 
 2
 ​
@@ -168,17 +180,21 @@ Gradient of the Loss with respect to the first bias vector (db
 1
 ​
  ):
+ 
 $$
 db_1 = \frac{1}{m} \sum_{i=1}^m dZ_1^{(i)}
 $$
+
 This calculates how much the first layer's biases (b1) contributed to the error. It's the average of the error at the hidden layer (dZ_1) summed across all training examples. This gradient will be used to update b1.
 
 In essence, backpropagation uses the chain rule of calculus to efficiently calculate these gradients across all the layers of the network. These gradients are then used by the Gradient Descent algorithm to update the weights and biases in a way that minimizes the Loss function, thus improving the network's performance over time.
 For backprogations we are going to take the output that was given and then go backwards as the name implies and find the derivative of the loss function in respect to its respective element at each layer. 
 
+
 $$
 \text{Loss} = -\frac{1}{m} \sum_{i=1}^m \log(a_2[y_i, i])
 $$
+
 
 
 ```python
