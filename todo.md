@@ -1,0 +1,53 @@
+# TODO 
+- Linear Regression  
+- Logistic Regression  
+- Decision Trees  
+- Random Forests  
+- Gradient Boosting (XGBoost, LightGBM, CatBoost)  
+- Support Vector Machines (SVM)  
+- k-Nearest Neighbors (k-NN)  
+- Naive Bayes  
+- k-Means Clustering  
+- Hierarchical Clustering  
+- DBSCAN  
+- t-SNE  
+- UMAP  
+- Self-training  
+- Label Propagation  
+- Q-Learning  
+- Policy Gradient Methods  
+- Artificial Neural Networks (ANNs)  
+- Convolutional Neural Networks (CNNs)  
+- Recurrent Neural Networks (RNNs)  
+- Long Short-Term Memory (LSTM)  
+- Gated Recurrent Units (GRU)  
+- Autoencoders  
+- Variational Autoencoders (VAEs)  
+- Generative Adversarial Networks (GANs)  
+- Transfer Learning  
+- Bagging  
+- Boosting  
+- Stacking  
+- Voting Classifier  
+- Ridge Regression  
+- Lasso Regression  
+- Elastic Net  
+- Multinomial Logistic Regression  
+- Quadratic Discriminant Analysis (QDA)  
+- Linear Discriminant Analysis (LDA)  
+- Isolation Forest  
+- One-Class SVM  
+- Feature Selection (Univariate, Recursive, Embedded)  
+- Dimensionality Reduction  
+- Cross-Validation  
+- Hyperparameter Tuning  
+- Grid Search  
+- Random Search  
+- Bayesian Optimization  
+- Early Stopping  
+- Learning Rate Schedulers  
+- Model Ensembling  
+
+
+# Done 
+- Principal Component Analysis (PCA)   
