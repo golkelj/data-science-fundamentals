@@ -1,0 +1,111 @@
+<!DOCTYPE html>
+<!-- saved from url=(0021)https://montyhall.io/ -->
+<html lang="en"><head><meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
+  
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta http-equiv="X-UA-Compatible" content="ie=edge">
+  <meta name="description" content="Simple, elegant and interactive Monty Hall problem simulator to help you learn about the classic probability puzzle.">
+  <link href="./css" rel="stylesheet">
+  <title>🐐 Monty Hall Problem Simulator</title>
+  <link href="./styles.css" rel="stylesheet" type="text/css">
+  <link rel="preload" as="image" href="https://montyhall.io/assets/car.jpg">
+  <link rel="preload" as="image" href="https://montyhall.io/assets/goatfalse.jpg">
+  <link rel="preload" as="image" href="https://montyhall.io/assets/goattrue.jpg">
+  <link href="./door1hov.css" id="hoversheet12" rel="stylesheet" type="text/css">
+  <link href="./door2hov.css" id="hoversheet22" rel="stylesheet" type="text/css">
+  <link href="./door3hov.css" id="hoversheet32" rel="stylesheet" type="text/css">
+</head>
+
+<body data-new-gr-c-s-check-loaded="14.1240.0" data-gr-ext-installed="">
+  <div class="content">
+    <h1 class="title"><span class="titlespan" onclick="reset()">Monty Hall Problem Simulator</span></h1>
+    <div id="rulesDialog" class="modal">
+      <div class="modal-content">
+        <div class="modal-header">
+          <h2 class="modal-title">Rules of Play</h2>
+          <button id="rulesClose">×</button>
+        </div>
+        <ul>
+          <li>The goal of this game is to choose the winning door from three available doors. Behind the winning door is a new car, and behind the other two doors are goats.</li>
+          <li>First, the player must choose one of the three doors.</li>
+          <li>Next, the game show host will reveal a goat from behind one of the other two doors (the host always knows where the car is and will never reveal it).</li>
+          <li class="last-li">Lastly, the player can either open the door they chose first, or they can switch to the other closed door. If the door they open reveals a new car, the player wins!
+          </li>
+        </ul>
+      </div>
+    </div>
+    <div id="aboutDialog" class="modal">
+      <div class="modal-content">
+        <div class="modal-header">
+          <h2 class="modal-title">About the Game</h2>
+          <button id="aboutClose">×</button>
+        </div>
+        <p>Despite being very simple at its core, the Monty Hall problem is an
+          oddly confusing probability puzzle that has confounded people for decades, including some otherwise really smart
+          folks who simply don't believe the counterintuitive results.</p>
+        <p>Here, you can play an interactive, simulated
+          version of the Monty Hall problem (loosely based on the original version of <i>Let's Make a Deal</i>) as many times as
+          you want to try to figure out which strategy works best (and more important, why it works – even though it seems
+          like it shouldn't).</p>
+      </div>
+    </div>
+    <div id="statsDialog" class="modal">
+      <div class="modal-content">
+        <div class="modal-header">
+          <h2 class="modal-title">My Game Stats</h2>
+          <button id="statsClose">×</button>
+        </div>
+        <p id="statsContent">
+        </p>
+      </div>
+    </div>
+    <div class="buttons">
+      <button id="rulesButton">Rules</button>
+      <button id="aboutButton">About</button>
+      <button id="statsButton" onclick="stats()">Stats</button>
+      <button id="resetButton" class="reset" onclick="reset()">Reset</button>
+    </div>
+    <div class="doors" id="doors">
+      <div class="door" id="door1" onclick="play(1)"><b class="doortitle">Door #1</b></div>
+      <div class="door" id="door2" onclick="play(2)"><b class="doortitle">Door #2</b></div>
+      <div class="door" id="door3" onclick="play(3)"><b class="doortitle">Door #3</b></div>
+    </div>
+    <div class="doors2" id="doors2">
+      <div class="door2" id="door12" onclick=""><b class="doortitle">Door #1</b></div>
+      <div class="door2" id="door22" onclick=""><b class="doortitle">Door #2</b></div>
+      <div class="door2" id="door32" onclick=""><b class="doortitle">Door #3</b></div>
+    </div>
+    <div class="messageContainer">
+      <p id="message">Click on any door above to play!</p>
+    </div>
+  </div>
+  <footer class="footer">
+    <p><b>ABOUT:</b> Made with ❤️ and ☕ by <a href="https://sjc.sh/" target="_blank" rel="noopener">sjc</a> using 100% vanilla HTML, CSS and JavaScript. Hosted with <a href="https://www.netlify.com/" target="_blank" rel="noopener">Netlify</a>.</p>
+    <p class="last-footer"><b>DISCLAIMER:</b> You can't actually win anything real on this site, as this is just a
+      simulation for educational and entertainment purposes.</p>
+  </footer>
+  <script src="./index.js"></script>
+
+
+
+</body><grammarly-desktop-integration data-grammarly-shadow-root="true"><template shadowrootmode="open"><style>
+      div.grammarly-desktop-integration {
+        position: absolute;
+        width: 1px;
+        height: 1px;
+        padding: 0;
+        margin: -1px;
+        overflow: hidden;
+        clip: rect(0, 0, 0, 0);
+        white-space: nowrap;
+        border: 0;
+        -moz-user-select: none;
+        -webkit-user-select: none;
+        -ms-user-select:none;
+        user-select:none;
+      }
+
+      div.grammarly-desktop-integration:before {
+        content: attr(data-content);
+      }
+    </style><div aria-label="grammarly-integration" role="group" tabindex="-1" class="grammarly-desktop-integration" data-content="{&quot;mode&quot;:&quot;full&quot;,&quot;isActive&quot;:true,&quot;isUserDisabled&quot;:false}"></div></template></grammarly-desktop-integration></html>
