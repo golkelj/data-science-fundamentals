@@ -47,3 +47,9 @@ First stage is learning to use the following
 
 
 ## Next steps 
+
+- Tools
+    - Github
+    - Git
+    - AWS (alternative)
+    - Client/Server Protocal
