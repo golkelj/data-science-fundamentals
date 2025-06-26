@@ -53,3 +53,6 @@ First stage is learning to use the following
     - Git
     - AWS (alternative)
     - Client/Server Protocal
+
+- Programming
+    - Learning more languages to get a wider breathe
