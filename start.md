@@ -56,3 +56,6 @@ First stage is learning to use the following
 
 - Programming
     - Learning more languages to get a wider breathe
+
+- Models 
+    - review/understand a bunch of different model technique. 
