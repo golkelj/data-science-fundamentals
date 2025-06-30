@@ -59,3 +59,5 @@ First stage is learning to use the following
 
 - Models 
     - review/understand a bunch of different model technique. 
+
+Get better at math is a good tip
